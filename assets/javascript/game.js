@@ -1,4 +1,4 @@
-let words = ["kenny", "kyle", "stan", "cartman", "tweak", "chef",];
+let words = ["kenny", "kyle", "stan", "cartman", "tweak", "chef", "jimbo", "garrison"];
 let blankArr = [];
 let userLetters = [];
 let guesses = 9;
@@ -34,7 +34,9 @@ function reset () {
     console.log(compWord);
     console.log(wordLength);
     guesses = 9;
-    userLetters = []
+    isOver = false;
+    userLetters = [];
+    blankArr = [];
     for (i = 0; i < compWord.length; i++){
         blankArr[i] = "_";
         
@@ -42,15 +44,10 @@ function reset () {
     document.getElementById('solution').innerText = blankArr.join(" ");
     document.getElementById('left').className = "card-text text-center display-4";
     document.getElementById('left').innerText = guesses;
+    document.getElementById('letters').innerText = userLetters;
+    document.getElementById('winlose').innerText = "Guesses Remaining"
 }
 
-function blank() {
-    for (i = 0; i < compWord.length; i++){
-        blankArr[i] = "_";
-       
-    }
-    
-}
 
 //updates blank word array on screen and guess counter
 function updateBlank(x) {
@@ -69,6 +66,10 @@ function updateBlank(x) {
     
 }
 
+function pushL (x){
+    userLetters.push(x);
+    document.getElementById('letters').innerText = userLetters.join(" , ");
+}
 
 
 
@@ -83,7 +84,7 @@ document.onkeyup = function(event){
     
     //only runs when the user letter is not a letter that has already been chosen
     if (!userLetters.includes(userInput)){ 
-        userLetters.push(userInput);
+        pushL(userInput);
 
         if (guesses >= 1 && wordLength >= 1){
 
@@ -96,12 +97,22 @@ document.onkeyup = function(event){
                     blankArr[j] = userInput;
                     guesses += 1;  
                     wordLength--;
-                    console.log(wordLength);
                 }
             
                
             }
-         
+            
+            if (wordLength === 0){
+                document.getElementById('winlose').innerText = "You Win";
+                win.add();
+                isOver = true;
+            }
+            else if (guesses === 0){
+                document.getElementById('winlose').innerText = "You Lose";
+                lose.add();
+                isOver = true;
+            }
+
             updateBlank(guesses);
         }
         else if(wordLength === 0){
@@ -117,6 +128,10 @@ document.onkeyup = function(event){
 
 
     }
+    else if (isOver){
+        reset();
+    }
+    
   
    
 
