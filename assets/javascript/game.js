@@ -11,7 +11,6 @@ let win = {
 
     add: function (){
         this.score += 1;
-        updateBlank();
         return this.score;
     }
 
@@ -21,7 +20,6 @@ let lose = {
 
     add: function (){
         this.score += 1;
-        updateBlank();
         return this.score;
     }
     
