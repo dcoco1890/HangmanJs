@@ -1,16 +1,18 @@
 let words = ["kenny", "kyle", "stan", "cartman", "tweak", "chef", "jimbo", "garrison"];
 let blankArr = [];
 let userLetters = [];
-let guesses = 9;
+let guesses = 10;
 let compWord = "";
 let isOver = false;
 let wordLength = 0;
+var ex = document.getElementById('x');
 
 let win = {
     score: 0,
 
     add: function (){
         this.score += 1;
+        document.getElementById('w').innerText = this.score;
         return this.score;
     }
 
@@ -20,6 +22,7 @@ let lose = {
 
     add: function (){
         this.score += 1;
+        document.getElementById('l').innerText = this.score;
         return this.score;
     }
     
@@ -43,7 +46,8 @@ function reset () {
     document.getElementById('left').className = "card-text text-center display-4";
     document.getElementById('left').innerText = guesses;
     document.getElementById('letters').innerText = userLetters;
-    document.getElementById('winlose').innerText = "Guesses Remaining"
+    document.getElementById('winlose').innerText = "Guesses Remaining";
+    ex.innerText = "Letters Picked";
 }
 
 
@@ -86,8 +90,6 @@ document.onkeyup = function(event){
 
         if (guesses >= 1 && wordLength >= 1){
 
-            
-
             //decrements guesses on every press (if there are guesses left) BUT gives you a guess back if you get the letter right
             guesses--;
             for (j = 0; j < compWord.length; j++){
@@ -95,18 +97,18 @@ document.onkeyup = function(event){
                     blankArr[j] = userInput;
                     guesses += 1;  
                     wordLength--;
-                }
-            
-               
+                } 
             }
             
             if (wordLength === 0){
                 document.getElementById('winlose').innerText = "You Win";
+                ex.innerText = "Press any key to continue";
                 win.add();
                 isOver = true;
             }
             else if (guesses === 0){
                 document.getElementById('winlose').innerText = "You Lose";
+                ex.innerText = "Press any key to continue";
                 lose.add();
                 isOver = true;
             }
