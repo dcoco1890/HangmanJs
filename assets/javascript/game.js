@@ -8,7 +8,6 @@ let wordLength = 0;
 var w = document.getElementById('w');
 var l = document.getElementById('l');
 var letterInWord = false;
-var ex = document.getElementById('x');
 
 let win = {
     score: 0,
@@ -16,7 +15,6 @@ let win = {
 
     add: function (){
         this.score += 1;
-
         return this.score;
     },
     update: function(){
@@ -29,7 +27,6 @@ let lose = {
 
     add: function (){
         this.score += 1;
-
         return this.score;
     },
     update: function(){
@@ -58,7 +55,6 @@ function reset () {
     document.getElementById('left').innerText = guesses;
     document.getElementById('letters').innerText = userLetters;
     document.getElementById('winlose').innerText = "Guesses Remaining"
-    ex.innerText = "Letters Picked";
 }
 
 
@@ -111,8 +107,6 @@ document.onkeyup = function(event){
                     letterInWord = true; 
                     wordLength--;
                 }
-               
-        
             }
 
             //added so guesses did not increment twice for a double letter word
@@ -123,14 +117,12 @@ document.onkeyup = function(event){
             // for every right letter, the wordlength variable is decremented. This checks to see if it's zero, which indicates a win
             if (wordLength === 0){
                 document.getElementById('winlose').innerText = "You Win";
-                ex.innerText = "Press any key to continue";
                 win.add();
                 win.update();
                 isOver = true;
             }
             else if (guesses === 0){
                 document.getElementById('winlose').innerText = "You Lose";
-                ex.innerText = "Press any key to continue";
                 lose.add();
                 lose.update();
                 isOver = true;
