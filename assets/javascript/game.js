@@ -7,6 +7,7 @@ let isOver = false;
 let wordLength = 0;
 var w = document.getElementById('w');
 var l = document.getElementById('l');
+var x = document.getElementById('x');
 var letterInWord = false;
 
 let win = {
@@ -40,8 +41,8 @@ function reset () {
     var x = Math.floor((Math.random() * words.length));
     compWord = words[x];
     wordLength = compWord.length;
-    console.log(compWord);
-    console.log(wordLength);
+    // console.log(compWord);
+    // console.log(wordLength);
     guesses = 9;
     isOver = false;
     userLetters = [];
@@ -50,6 +51,7 @@ function reset () {
         blankArr[i] = "_";
         
     }
+    
     document.getElementById('solution').innerText = blankArr.join(" ");
     document.getElementById('left').className = "card-text text-center display-4";
     document.getElementById('left').innerText = guesses;
@@ -120,12 +122,14 @@ document.onkeyup = function(event){
                 win.add();
                 win.update();
                 isOver = true;
+                x.innerText = "Press a key to play again";
             }
             else if (guesses === 0){
                 document.getElementById('winlose').innerText = "You Lose";
                 lose.add();
                 lose.update();
                 isOver = true;
+                x.innerText = "Press a key to play again";
             }
 
             updateBlank(guesses);
@@ -136,6 +140,7 @@ document.onkeyup = function(event){
 
     } 
     else if (isOver){
+        x.innerText = "Letters Picked";
         reset();
     }
     
