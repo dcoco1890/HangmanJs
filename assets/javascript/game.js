@@ -1,17 +1,24 @@
-let words = ["kenny", "kyle", "stan", "cartman", "tweak", "chef", "jimbo", "garrison"];
+let words = ["kenny", "kyle", "stan", "cartman", "tweak", "chef", "jimbo", "garrison", "manbearpig", "craig", "jesus", "butters", "token", "fishsticks"];
 let blankArr = [];
 let userLetters = [];
 let guesses = 9;
 let compWord = "";
 let isOver = false;
 let wordLength = 0;
+var w = document.getElementById('w');
+var l = document.getElementById('l');
+var letterInWord = false;
 
 let win = {
     score: 0,
 
+
     add: function (){
         this.score += 1;
         return this.score;
+    },
+    update: function(){
+        w.innerText =this.score;
     }
 
 }
@@ -21,10 +28,14 @@ let lose = {
     add: function (){
         this.score += 1;
         return this.score;
+    },
+    update: function(){
+        l.innerText = this.score;
     }
     
 }
 
+//called at the start and after a win or lose. resets all elements to starting positions and picks a new word.
 function reset () {
     var x = Math.floor((Math.random() * words.length));
     compWord = words[x];
@@ -81,7 +92,7 @@ document.onkeyup = function(event){
     let userInput = event.key.toLowerCase();
     
     //only runs when the user letter is not a letter that has already been chosen
-    if (!userLetters.includes(userInput)){ 
+    if (!userLetters.includes(userInput) && isOver === false){ 
         pushL(userInput);
 
         if (guesses >= 1 && wordLength >= 1){
@@ -93,39 +104,37 @@ document.onkeyup = function(event){
             for (j = 0; j < compWord.length; j++){
                 if(compWord[j] === userInput){
                     blankArr[j] = userInput;
-                    guesses += 1;  
+                    letterInWord = true; 
                     wordLength--;
                 }
-            
-               
             }
-            
+
+            //added so guesses did not increment twice for a double letter word
+            if(letterInWord){
+                guesses+=1;
+                letterInWord = false;
+            }
+            // for every right letter, the wordlength variable is decremented. This checks to see if it's zero, which indicates a win
             if (wordLength === 0){
                 document.getElementById('winlose').innerText = "You Win";
                 win.add();
+                win.update();
                 isOver = true;
             }
             else if (guesses === 0){
                 document.getElementById('winlose').innerText = "You Lose";
                 lose.add();
+                lose.update();
                 isOver = true;
             }
 
             updateBlank(guesses);
         }
-        else if(wordLength === 0){
-            win.add();
-            reset();
-
-        }
-        else {
-            lose.add();
-            reset();
-        }
+        
         
 
 
-    }
+    } 
     else if (isOver){
         reset();
     }
