@@ -1,23 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+
     <title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../HangmanJs/assets/css/style.css">
 
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="navbar-text text-light">South Park Hangman</h1>
+    </nav>
+    <!-- <div class="jumbotron p-2">
 
-    <div class="jumbotron p-2">
 
-        <h1 class="display-4 text-center">South Park Hangman</h1>
 
-    </div>
+    </div> -->
 
 
     <main>
@@ -32,15 +36,19 @@
                             <p id="left" class="card-text text-center display-4"></p>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 id="xtra" class="card-title text-center">Letters Remaining</h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 id="xtra" class="card-title text-center">Letters Picked</h5>
                             <h3 id="letters" class="card-text text-center"></h3>
                             <div class="d-flex flex-row justify-content-center" id="alphabet">
 
                             </div>
                         </div>
                     </div>
+
+
+
+
                     <div class="row">
 
                         <div class="col">

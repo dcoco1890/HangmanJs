@@ -100,7 +100,7 @@ function pushL(x) {
     // adds the letter to the users guesses. the second line removes and adds
     // a class to the button with the id attribute of the letter passed in.
     userLetters.push(x);
-    $(`#${x}>button`).removeClass("letter-button-color").addClass("btn btn-primary");
+    $(`#${x}>button`).removeClass("letter-button-color").addClass("btn btn-primary flip-scale-up-hor");
 
 }
 
