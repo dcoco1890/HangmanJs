@@ -37,13 +37,14 @@ let lose = {
 
 }
 
-//called at the start and after a win or lose. resets all elements to starting positions and picks a new word.
+
 function reset() {
+
+    //called at the start and after a win or lose. resets all 
+    // elements to starting positions and picks a new word.
     var x = Math.floor((Math.random() * words.length));
     compWord = words[x];
     wordLength = compWord.length;
-    // console.log(compWord);
-    // console.log(wordLength);
     guesses = 9;
     isOver = false;
     userLetters = [];
@@ -76,8 +77,10 @@ function reset() {
 }
 
 
-//updates blank word array on screen and guess counter
+
 function updateBlank(x) {
+
+    //updates blank word array on screen and guess counter
     document.getElementById('solution').innerText = blankArr.join(" ");
     var el = document.getElementById('left');
 
@@ -93,14 +96,10 @@ function updateBlank(x) {
 }
 
 function pushL(x) {
+
+    // adds the letter to the users guesses. the second line removes and adds
+    // a class to the button with the id attribute of the letter passed in.
     userLetters.push(x);
-    // document.getElementById('letters').innerText = userLetters.join(" , ");
-
-    //grabs the class of the appropriate button pressed by keyboard
-    // var guessed = $(`#${x}>button`);
-
-    // var classer = guessed.attr("class");
-    // classer.removeClass("letter-button-color");
     $(`#${x}>button`).removeClass("letter-button-color").addClass("btn btn-primary");
 
 }
@@ -109,6 +108,63 @@ function pushL(x) {
 
 
 reset();
+
+$(document).on("click", "button", function() {
+    var t = $(this).attr("id");
+    var userInput = t.toLowerCase();
+
+    //only runs when the user letter is not a letter that has already been chosen
+    if (!userLetters.includes(userInput) && isOver === false) {
+        pushL(userInput);
+
+        if (guesses >= 1 && wordLength >= 1) {
+
+
+
+            //decrements guesses on every press (if there are guesses left) BUT gives you a guess back if you get the letter right
+            guesses--;
+            for (j = 0; j < compWord.length; j++) {
+                if (compWord[j] === userInput) {
+                    blankArr[j] = userInput;
+                    letterInWord = true;
+                    wordLength--;
+                }
+            }
+
+            //added so guesses did not increment twice for a double letter word
+            if (letterInWord) {
+                guesses += 1;
+                letterInWord = false;
+            }
+            // for every right letter, the wordlength variable is decremented. This checks to see if it's zero, which indicates a win
+            if (wordLength === 0) {
+                document.getElementById('winlose').innerText = "You Win";
+                win.add();
+                win.update();
+                isOver = true;
+                x.innerText = "Press a key to play again";
+            } else if (guesses === 0) {
+                document.getElementById('winlose').innerText = "You Lose";
+                lose.add();
+                lose.update();
+                isOver = true;
+                x.innerText = "Press a key to play again";
+            }
+
+            updateBlank(guesses);
+        }
+
+
+
+
+    } else if (isOver) {
+        x.innerText = "Letters Picked";
+        reset();
+    }
+
+
+
+});
 
 let el = document.getElementById('solution');
 el.textContent = blankArr.join(' ');
