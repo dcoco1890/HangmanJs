@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <title>Hangman</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="../HangmanJs/assets/css/style.css">
-        
-</head>
-<body>
-<header>
-    <div class="fluid jumbotron">
-        <div class="row">
-            <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h1 class="display-4 text-center">South Park Hangman</h1>
-                </div>
-            <div class="col-md-3"></div>
-        </div>
-    </div>
-</header>
 
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3"></div>
-                <div class="col-md-6">
-                        <h3 class="text-center bg-light text-info display-4" id="solution"></h3>
-                        <div class="card">
-                                <div class="card-body">
-                                  <h5 id="winlose" class="card-title text-center">Guesses Remaining</h5>
-                                  <p id="left" class="card-text text-center display-4"></p>
-                                </div>
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../HangmanJs/assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron p-2">
+
+        <h1 class="display-4 text-center">South Park Hangman</h1>
+
+    </div>
+
+
+    <main>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-8 offset-2">
+                    <h3 class="text-center bg-light text-info display-4" id="solution"></h3>
+                    <div class="card">
+                        <div class="">
+                            <h5 id="winlose" class="card-title text-center">Guesses Remaining</h5>
+                            <p id="left" class="card-text text-center display-4"></p>
                         </div>
-                        <div class="card">
-                                <div class="card-body">
-                                  <h5 id="x" class="card-title text-center">Letters Picked</h5>
-                                  <h3 id="letters" class="card-text text-center"></h3>
-                                </div>
-                        </div>
-                        <div class="row">
-                            
-                            <div class="col">
-                                    <div class="card">
-                                <h3 class="text-center">Win</h3>
-                                <h3 id="w" class="text-center text-success">0</h3>
-                            </div></div>
-                            <div class="col">
-                                    <div class="card">
-                                    <h3 class="text-center">Lose</h3>
-                                    <h3 id="l" class="text-center text-danger">0</h3>
-                                </div></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 id="xtra" class="card-title text-center">Letters Remaining</h5>
+                            <h3 id="letters" class="card-text text-center"></h3>
+                            <div class="d-flex flex-row justify-content-center" id="alphabet">
+
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="card">
+                                <h3 class="text-center">Win</h3>
+                                <h3 id="win" class="text-center text-success">0</h3>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <h3 class="text-center">Lose</h3>
+                                <h3 id="lose" class="text-center text-danger">0</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <div class="col-md-3"></div>
+            </div>
+
         </div>
-    </div>
-</main>
+        </div>
+    </main>
 
 
-<script src="../HangmanJs/assets/javascript/game.js"></script>
+    <script src="../HangmanJs/assets/javascript/game.js"></script>
 </body>
+
 </html>
