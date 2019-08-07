@@ -9,7 +9,7 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../HangmanJs/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
@@ -17,19 +17,13 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <h1 class="navbar-text text-light">South Park Hangman</h1>
     </nav>
-    <!-- <div class="jumbotron p-2">
-
-
-
-    </div> -->
-
 
     <main>
         <div class="container">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <h3 class="text-center bg-light text-info display-4" id="solution"></h3>
+                    <h3 class="text-center bg-light text-info display-4 my-2" id="solution"></h3>
                     <div class="card">
                         <div class="">
                             <h5 id="winlose" class="card-title text-center">Guesses Remaining</h5>
@@ -38,9 +32,9 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <h5 id="xtra" class="card-title text-center">Letters Picked</h5>
-                            <h3 id="letters" class="card-text text-center"></h3>
-                            <div class="d-flex flex-row justify-content-center" id="alphabet">
+                            <h5 id="xtra" class="card-title text-center">Click or type a letter</h5>
+
+                            <div class="d-flex flex-row justify-content-center flex-wrap my-2" id="alphabet">
 
                             </div>
                         </div>
@@ -65,6 +59,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2"></div>
 
             </div>
 

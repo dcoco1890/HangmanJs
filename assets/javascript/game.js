@@ -72,8 +72,8 @@ function reset() {
     document.getElementById('solution').innerText = blankArr.join(" ");
     document.getElementById('left').className = "card-text text-center display-4";
     document.getElementById('left').innerText = guesses;
-    document.getElementById('letters').innerText = userLetters;
-    document.getElementById('winlose').innerText = "Guesses Remaining"
+    // document.getElementById('letters').innerText = userLetters;
+    document.getElementById('winlose').innerText = "Click or type a letter"
 }
 
 
@@ -106,7 +106,7 @@ function pushL(x) {
 
 
 
-
+// starts the game. might be a better way to do this, but made more sense at the time
 reset();
 
 $(document).on("click", "button", function() {
@@ -144,7 +144,7 @@ $(document).on("click", "button", function() {
                 isOver = true;
                 x.innerText = "Press a key to play again";
             } else if (guesses === 0) {
-                document.getElementById('winlose').innerText = "You Lose";
+                $('#winlose').html(`You Lose!\nThe character was <h2>${compWord}</h2>`);
                 lose.add();
                 lose.update();
                 isOver = true;
@@ -158,7 +158,7 @@ $(document).on("click", "button", function() {
 
 
     } else if (isOver) {
-        x.innerText = "Letters Picked";
+        x.innerText = "Click or type a letter";
         reset();
     }
 
@@ -166,8 +166,8 @@ $(document).on("click", "button", function() {
 
 });
 
-let el = document.getElementById('solution');
-el.textContent = blankArr.join(' ');
+// let el = document.getElementById('solution');
+// el.textContent = blankArr.join(' ');
 
 document.onkeyup = function(event) {
     let userInput = event.key.toLowerCase();
@@ -204,7 +204,7 @@ document.onkeyup = function(event) {
                 isOver = true;
                 x.innerText = "Press a key to play again";
             } else if (guesses === 0) {
-                document.getElementById('winlose').innerText = "You Lose";
+                $('#winlose').html(`You Lose!\nThe character was <h2>${compWord}</h2>`);
                 lose.add();
                 lose.update();
                 isOver = true;
@@ -218,7 +218,7 @@ document.onkeyup = function(event) {
 
 
     } else if (isOver) {
-        x.innerText = "Letters Picked";
+        x.innerText = "Click or type a letter";
         reset();
     }
 
